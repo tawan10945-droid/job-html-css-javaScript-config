@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>📅 ปฏิทินงาน</title>
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../CSS/home.css">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/locales-all.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="header-title">📅 ปฏิทินงาน</div>
+  <div style="display: flex; gap: 0.5rem; align-items: center;">
+    <button id="printCalendarBtn" title="ปริ้นปฏิทิน">🖨️</button>
+    <button id="openSidebarBtn">☰</button>
+  </div>
+</header>
+
+<div id="sidebar">
+  <button id="closeSidebarBtn">✕</button>
+  
+  <div class="logo-container" style="text-align: center; margin-bottom: 1rem;">
+    <img src="../image/ad_logo-Photoroom.png" style="width: 80px; height: auto; background: rgba(255,255,255,0.9); padding: 8px; border-radius: 12px;">
+  </div>
+  
+  <div class="user-card">
+    <div class="user-icon">👤</div>
+    <div class="user-label">ผู้ใช้งาน</div>
+    <div id="displayName">-</div>
+  </div>
+
+  <a id="leaveDayLink" href="leaveDay.html">📝 จัดการวันลา</a>
+  <a href="index.html">🏠 หน้าหลัก</a>
+</div>
+
+<div id="sidebarOverlay"></div>
+
+<div id="calendar"></div>
+
+<div id="eventModal" class="modal">
+  <div class="modal-content">
+    <h3>รายละเอียดงาน</h3>
+    <p><strong>ชื่อผู้ปฏิบัติงาน:</strong> <span id="modalTitle"></span></p>
+    <p><strong>เลขงาน:</strong> <span id="modalJobNumber"></span></p>
+    <p><strong>ลักษณะงาน:</strong> <span id="modalJobTypes"></span></p>
+    <p><strong>สถานที่:</strong> <span id="modalLocation"></span></p>
+    <p><strong>วิธีการเดินทาง:</strong> <span id="modalHowto"></span></p>
+    <p><strong>วันที่เริ่ม:</strong> <span id="modalStart"></span>
+    <strong>วันที่สิ้นสุด:</strong> <span id="modalEnd"></span></p>
+    <p><strong>รายละเอียด:</strong> <span id="modalDetails"></span></p>
+    <p><strong>ผู้สั่งงาน:</strong> <span id="modalAssignedBy"></span></p>
+    <p><strong>สถานะ:</strong> <span id="modalStatus"></span></p>
+    <p><strong>เหตุผลที่ไม่เรียบร้อย:</strong> <span id="modalIncompleteReason"></span></p>
+    <p><strong>หมายเหตุ:</strong></p>
+    <input type="text" id="modalRemarkInput" placeholder="กรอกหมายเหตุ...">
+    <button id="btnSaveRemark">💾 บันทึกหมายเหตุ</button>
+
+    <div class="button-group">
+      <button id="btnComplete">✅ เรียบร้อย</button>
+      <button id="btnIncomplete">❌ ไม่เรียบร้อย</button>
+      <button id="btnDetail">🔍 ดูรายละเอียดเพิ่มเติม</button>
+      <button id="btnAcknowledge">📝 รับทราบ</button>
+    </div>
+
+    <button id="closeModal">ปิด</button>
+  </div>
+</div>
+
+<footer>&copy; 2025 ระบบจองบุคคลออกปฏิบัติงาน | AUTODIDACTIC</footer>
+
+<script type="module" src="../public/config-firesbase/firebase-config.js"></script>
+<script src="../js/home.js" type="module"></script>
+
+</body>
+</html>

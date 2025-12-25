@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🏖 จัดการวันลา - AUTODIDACTIC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/leaveDay.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-container">
+        <div class="logo-box">
+          <img src="../image/.ad_logo-Photoroom.png" alt="Logo">
+        </div>
+      </div>
+      <h1>🏖 จัดการวันลา</h1>
+      <p class="subtitle">ระบบบริหารจัดการวันลาพนักงาน</p>
+    </div>
+
+    <!-- Back Button -->
+    <a href="home.html" class="back-btn">
+      <span>⬅️</span>
+      <span>กลับหน้าหลัก</span>
+    </a>
+
+    <!-- Add/Edit Leave Form -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" id="formIcon">➕</div>
+        <h2 class="card-title" id="formTitle">เพิ่มวันลาใหม่</h2>
+      </div>
+
+      <div class="form-group">
+        <label>ชื่อพนักงาน</label>
+        <input type="text" id="leaveWorker" readonly>
+      </div>
+
+      <div class="form-group">
+        <label>วันที่เริ่มลา</label>
+        <input type="date" id="leaveStart">
+      </div>
+
+      <div class="form-group">
+        <label>วันที่สิ้นสุด</label>
+        <input type="date" id="leaveEnd">
+      </div>
+
+      <div class="form-group">
+        <label>เหตุผลการลา</label>
+        <select id="leaveReason">
+          <option value="">-- เลือกเหตุผลการลา --</option>
+          <option value="ลากิจ">ลากิจ</option>
+          <option value="ลาป่วย">ลาป่วย</option>
+          <option value="ลาพักร้อน">ลาพักร้อน</option>
+          <option value="สลับหยุด">สลับหยุด</option>
+        </select>
+      </div>
+
+      <button class="btn-primary" id="addLeaveBtn">บันทึกวันลา</button>
+      <button class="btn-cancel" id="cancelEditBtn" style="display:none;">❌ ยกเลิกการแก้ไข</button>
+    </div>
+
+    <!-- Leave List -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📅</div>
+        <h2 class="card-title">รายการวันลาของคุณ</h2>
+      </div>
+      <div id="leaveList" class="loading">⏳ กำลังโหลดข้อมูล...</div>
+    </div>
+  </div>
+
+  <script type="module" src="../config-firesbase/firebase-config.js"></script>
+  <script src="../js/leaveDay.js" type="module"></script>
+</body>
+</html>

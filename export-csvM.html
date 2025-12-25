@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Export CSV - รายงานการออกปฏิบัติงาน</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/exportM.css">
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="header-icon">📥</div>
+    <div class="header-text">
+      <h1>Export CSV — รายงานการออกปฏิบัติงาน</h1>
+      <p>ส่งออกข้อมูลรายงานเป็นไฟล์ CSV</p>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="nav-section fade-in">
+    <a href="manager.html" class="btn btn-secondary">
+      <span>←</span>
+      <span>กลับหน้าหลัก</span>
+    </a>
+  </div>
+
+  <div class="control-card fade-in">
+    <div class="card-title">
+      <span>⚙️</span>
+      <span>ตั้งค่าการส่งออกข้อมูล</span>
+    </div>
+
+    <div class="controls-grid">
+      <div class="form-group">
+        <label>
+          <span>📅</span>
+          <span>เริ่มต้น</span>
+        </label>
+        <input id="startMonth" type="month" />
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>📅</span>
+          <span>สิ้นสุด</span>
+        </label>
+        <input id="endMonth" type="month" />
+      </div>
+
+      <div class="form-group">
+        <label style="margin-bottom: 4px;">
+          <span>🎯</span>
+          <span>ตัวเลือกการแสดงผล</span>
+        </label>
+        <div class="checkbox-group">
+          <input id="includeZero" type="checkbox" checked />
+          <label for="includeZero">แสดงคนที่ไม่มีรายการด้วย</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button id="loadBtn" class="btn btn-primary">
+        <span>🔄</span>
+        <span>โหลดข้อมูล</span>
+      </button>
+      <button id="exportBtn" class="btn btn-success" disabled>
+        <span>⬇️</span>
+        <span>ดาวน์โหลด CSV</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="messageBox"></div>
+  <div id="tableWrap"></div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p>© 2025 AUTODIDACTIC | ระบบจัดการงานอัจฉริยะ</p>
+  </div>
+</footer>
+
+<script type="module" src="../config-firesbase/firebase-config.js"></script>
+<script src="../js/exportM-app.js" type="module"></script>
+
+</body>
+</html>

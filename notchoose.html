@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>จัดการงาน AUTODIDACTIC</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/notchoose.css">
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="../image/ad_logo-Photoroom.png" alt="Logo">
+  </div>
+  <h1>📋 จัดการงาน AUTODIDACTIC</h1>
+  <nav><a href="calendar_admin.html">← กลับหน้าปฏิทิน</a></nav>
+</header>
+
+<main>
+  <!-- ========== FORM ========== -->
+  <div class="form-container">
+    <div class="form-header">
+      <h2 id="formTitle">✨ เพิ่มงานใหม่</h2>
+      <p>กรอกข้อมูลงานให้ครบถ้วนเพื่อส่งขออนุมัติ</p>
+    </div>
+    
+    <form id="eventForm">
+      <input type="hidden" id="eventId">
+
+      <div class="form-group">
+        <label>📝 หมายเลขงาน:</label>
+        <input type="text" id="jobNumber" class="input-line" placeholder="เช่น JOB-001 (ไม่บังคับ)">
+        <div class="help-text">หากไม่ระบุ ระบบจะสร้างหมายเลขอัตโนมัติ</div>
+      </div>
+
+      <div class="form-group">
+        <label>👤 คนที่สั่งงาน: <span class="required">*</span></label>
+        <div class="dropdown">
+          <button type="button" class="dropdown-btn" id="assignedByBtn">เลือกชื่อ</button>
+          <div class="dropdown-content" id="assignedByList"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>📅 วันที่สั่งงาน: <span class="required">*</span></label>
+        <input type="date" id="orderDate" class="input-line" required>
+      </div>
+
+      <div class="form-group">
+        <label>🚀 วันที่เริ่ม: <span class="required">*</span></label>
+        <input type="date" id="start" class="input-line" required>
+      </div>
+
+      <div class="form-group">
+        <label>🏁 วันที่สิ้นสุด: <span class="required">*</span></label>
+        <input type="date" id="end" class="input-line" required>
+      </div>
+
+      <div class="form-group">
+        <label>📍 สถานที่: <span class="required">*</span></label>
+        <input type="text" id="location" class="input-line" placeholder="ระบุสถานที่ปฏิบัติงาน" required>
+      </div>
+
+      <div class="form-group">
+        <label>🏷️ ลักษณะงาน: <span class="required">*</span></label>
+        <div id="jobTypeGroup" class="checkbox-group">
+          <label><input type="checkbox" value="ส่งมอบ"> ส่งมอบ</label>
+          <label><input type="checkbox" value="ฝึกอบรม"> ฝึกอบรม</label>
+          <label><input type="checkbox" value="ออกแสดงสินค้า"> ออกแสดงสินค้า</label>
+          <label><input type="checkbox" value="ตรวจเช็ค/ซ่อม"> ตรวจเช็ค/ซ่อม</label>
+          <label><input type="checkbox" value="Visit"> Visit</label>
+          <label class="other-input-wrapper">
+            <input type="checkbox" id="otherJobTypeCheck" value="อื่นๆ"> อื่นๆ:
+            <input type="text" id="otherJobTypeText" placeholder="ระบุ...">
+          </label>
+        </div>
+      </div>
+
+      <label class="urgent-checkbox">
+        <input type="checkbox" id="urgentJob">
+        <span>⚡ อนุมัติงานด่วน</span>
+      </label>
+
+      <div class="form-group">
+        <label>📄 รายละเอียดงาน: <span class="required">*</span></label>
+        <textarea id="details" class="input-line" placeholder="ใส่รายละเอียดงาน..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>👨‍💼 ผู้ติดต่อ: <span class="required">*</span></label>
+        <input type="text" id="contactPerson" class="input-line" placeholder="ชื่อผู้ติดต่อ" required>
+      </div>
+
+      <div class="form-group">
+        <label>📞 เบอร์โทรศัพท์: <span class="required">*</span></label>
+        <input type="tel" id="phoneNumber" class="input-line" placeholder="เช่น 0812345678" required>
+      </div>
+
+      <button type="submit">💾 บันทึกงาน</button>
+      <a href="calendar_admin.html" class="btn-back">← กลับไปปฏิทิน</a>
+    </form>
+  </div>
+
+  <!-- ========== ACTIVE EVENT LIST ========== -->
+  <div class="panel">
+    <div class="panel-header">
+      <h3>🔄 กำลังดำเนินการ</h3>
+      <span class="count-badge" id="activeCount">0</span>
+    </div>
+    <div class="event-list" id="eventList">
+      <div class="empty-state">
+        <div class="icon">📋</div>
+        <p>ยังไม่มีงานที่กำลังดำเนินการ</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== COMPLETED EVENT LIST ========== -->
+  <div class="panel completed-panel">
+    <div class="panel-header">
+      <h3>✅ เรียบร้อยแล้ว</h3>
+      <span class="count-badge" id="completedCount">0</span>
+    </div>
+    <div class="event-list" id="completedEventList">
+      <div class="empty-state">
+        <div class="icon">✓</div>
+        <p>ยังไม่มีงานที่เสร็จสิ้น</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2025 AUTODIDACTIC SYSTEM - All Rights Reserved
+</footer>
+
+<script type="module" src="../config-firesbase/firebase-config.js"></script>
+<script type="module" src="../js/notchoose.js"></script>
+</body>
+</html>

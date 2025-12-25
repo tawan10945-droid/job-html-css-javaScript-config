@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>📊 สรุปจำนวนครั้งที่ออกปฏิบัติงานรายเดือน (แยกตามบุคคล)</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="../CSS/result.css">
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="header-icon">📊</div>
+    <div class="header-text">
+      <h1>สรุปจำนวนครั้งที่ออกปฏิบัติงานรายเดือน</h1>
+      <p>รายงานสถิติการปฏิบัติงานแยกตามบุคคล</p>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="nav-section fade-in">
+    <a href="manager.html" class="btn btn-secondary">
+      <span>←</span>
+      <span>กลับหน้าหลัก</span>
+    </a>
+    <a href="export-csvM.html" class="btn btn-primary">
+      <span>📥</span>
+      <span>ส่งออกเป็น CSV</span>
+    </a>
+  </div>
+
+  <div id="statsSection" class="stats-grid fade-in" style="display: none;">
+    <div class="stat-card">
+      <div class="stat-label">จำนวนเดือนที่เลือก</div>
+      <div class="stat-value">
+        <span class="stat-icon">📅</span>
+        <span id="monthCount">0</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">จำนวนบุคลากร</div>
+      <div class="stat-value">
+        <span class="stat-icon">👥</span>
+        <span id="workerCount">0</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">ครั้งที่ออกงานรวม</div>
+      <div class="stat-value">
+        <span class="stat-icon">🎯</span>
+        <span id="totalWork">0</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">ค่าเฉลี่ย/คน</div>
+      <div class="stat-value">
+        <span class="stat-icon">📈</span>
+        <span id="avgWork">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-card fade-in">
+    <div class="filter-title">
+      <span>🔍</span>
+      <span>เลือกช่วงเวลา</span>
+    </div>
+    <div class="filter-controls">
+      <div class="form-group">
+        <label>
+          <span>📅</span>
+          <span>เริ่มต้น</span>
+        </label>
+        <select id="startMonth"></select>
+      </div>
+      <div class="form-group">
+        <label>
+          <span>📅</span>
+          <span>สิ้นสุด</span>
+        </label>
+        <select id="endMonth"></select>
+      </div>
+      <button class="btn btn-primary" id="applyFilter">
+        <span>✨</span>
+        <span>แสดงผลรวม</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="chart-card fade-in">
+    <div id="chartContainer">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>กำลังโหลดข้อมูล...</p>
+      </div>
+    </div>
+    <div class="chart-wrapper" style="display: none;">
+      <canvas id="workChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p>© 2025 AUTODIDACTIC | ระบบจัดการงานอัจฉริยะ</p>
+  </div>
+</footer>
+
+<script type="module" src="../config-firesbase/firebase-config.js"></script>
+<script src="../js/result-app.js" type="module"></script>
+
+</body>
+</html>

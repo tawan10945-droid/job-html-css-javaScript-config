@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard ระบบ AUTODIDACTIC (Admin)</title>
+
+  <!-- FullCalendar -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="../CSS/admin.css">
+</head>
+<body>
+
+<header>
+  <div class="logo-title">
+    <img src="../image/ad_logo-Photoroom.png" alt="logo" onerror="this.style.display='none'" />
+    <div>
+      <div style="font-weight:800; font-size:18px;">🛠 ระบบจัดการ AUTODIDACTIC (Admin)</div>
+      <div class="tiny2">Dashboard - จัดการงาน วันลา ผู้ใช้งาน รายชื่อ และวันหยุด</div>
+    </div>
+  </div>
+  <nav>
+    <a href="calendar_admin.html" class="nav-btn">กลับหน้าหลัก</a>
+  </nav>
+</header>
+
+<main>
+  <div class="top-actions">
+    <a href="calendar_admin.html" class="btn">← กลับ</a>
+    <a href="export-csv.html" class="btn secondary">⬇ Export CSV</a>
+    <button id="toggleDebug" class="btn secondary">🔍 Debug</button>
+    <div style="flex:1"></div>
+    <div class="small-muted">© 2025 AUTODIDACTIC</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- รายการงานกำลังดำเนินการ -->
+    <section class="card">
+      <h3>📋 รายการงาน (กำลังดำเนินการ)</h3>
+      <div id="eventListPending" class="small-muted">⏳ กำลังโหลด...</div>
+    </section>
+
+    <!-- รายการวันลา -->
+    <section class="card">
+      <h3>🏖 รายการวันลา</h3>
+      <div id="leaveList" class="small-muted">⏳ กำลังโหลด...</div>
+    </section>
+
+    <!-- รายการงานเรียบร้อย -->
+    <section class="card">
+      <h3>📋 รายการงาน (เรียบร้อย)</h3>
+      <div id="eventListCompleted" class="small-muted">⏳ กำลังโหลด...</div>
+    </section>
+
+    <!-- ผู้ใช้งานระบบ -->
+    <section class="card" style="grid-column:1 / -1;">
+      <h3>👥 ผู้ใช้งานระบบ (Users)</h3>
+
+      <div class="input-row">
+        <input id="userName" type="text" placeholder="ชื่อผู้ใช้ (name)" style="flex:2;">
+        <input id="userUserId" type="text" placeholder="userId (ถ้าไม่ใส่ใช้ auto ID)" style="flex:1;">
+        <input id="userPassword" type="password" placeholder="รหัสผ่าน (password)" style="flex:1;">
+        <select id="userPosition" style="width:150px;">
+          <option value="">เลือกตำแหน่ง</option>
+          <option value="engineer">Engineer</option>
+          <option value="sales">Sales</option>
+          <option value="manager">Manager</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button id="addUserBtn" class="btn">➕ เพิ่มผู้ใช้</button>
+      </div>
+      <div class="tiny" style="margin-bottom:12px;">หากไม่ใส่ userId ระบบจะใช้ document ID เป็น userId อัตโนมัติ</div>
+
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:12px;">
+        <div>
+          <h4 class="small-muted">🔧 Engineer</h4>
+          <div id="engineerList">⏳ กำลังโหลด...</div>
+        </div>
+        <div>
+          <h4 class="small-muted">💼 Sales</h4>
+          <div id="salesList">⏳ กำลังโหลด...</div>
+        </div>
+        <div>
+          <h4 class="small-muted">👔 Manager</h4>
+          <div id="managerList">⏳ กำลังโหลด...</div>
+        </div>
+        <div>
+          <h4 class="small-muted">⚙️ Admin</h4>
+          <div id="adminList">⏳ กำลังโหลด...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- จัดการรายชื่อ (ดึงจาก users ตาม status) -->
+    <section class="card" style="grid-column:1 / -1;">
+      <h3>👤 รายชื่อ Worker / Assigner (จาก Users)</h3>
+      <div class="tiny" style="margin-bottom:12px;">
+        💡 รายชื่อด้านล่างดึงจาก users โดยอัตโนมัติ:<br>
+        • <b>Workers:</b> users ที่มี status เป็น "headworkers" หรือ "workers"<br>
+        • <b>Assigners:</b> users ที่มี status เป็น "assigners"<br>
+        <span style="color:#c00;">⚠️ หมายเหตุ: ระบบจะตรวจสอบทั้ง field "status" และ "stutus" (สะกดผิด)</span>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:12px;">
+        <div>
+          <h4 class="small-muted">ผู้ปฏิบัติงาน (Workers)</h4>
+          <div id="workerList">⏳ กำลังโหลด...</div>
+          <div id="workerDebug" class="debug-info" style="display:none;"></div>
+        </div>
+        <div>
+          <h4 class="small-muted">คนที่สั่งงาน (Assigners)</h4>
+          <div id="assignerList">⏳ กำลังโหลด...</div>
+          <div id="assignerDebug" class="debug-info" style="display:none;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ปฏิทินวันหยุด -->
+    <section class="card" style="grid-column:1 / -1;">
+      <h3>🏢 ปฏิทินวันหยุดประจำบริษัท</h3>
+      <div id="holidayCalendar"></div>
+      <div class="tiny" style="margin-top:8px;">💡 คลิกวันที่เพื่อเพิ่มวันหยุด — คลิกเหตุการณ์เพื่อลบ</div>
+    </section>
+
+  </div>
+</main>
+
+<footer>© 2025 ระบบ AUTODIDACTIC — สงวนลิขสิทธิ์</footer>
+
+<!-- Firebase Config & Main App -->
+<script type="module" src="../config-firesbase/firebase-config.js"></script>
+<script type="module" src="../js/admin.js"></script>
+
+</body>
+</html>

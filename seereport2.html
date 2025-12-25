@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ข้อมูลเบื้องต้นงานการจัดแสดงหรือสาธิต</title>
+
+<!-- External CSS -->
+<link rel="stylesheet" href="../CSS/report2.css">
+
+</head>
+<body>
+
+<div>
+  <a href="notchoose.html" class="btnH">กลับไปหน้าปฏิทิน</a>
+</div>
+
+<p class="right">
+  เอกสารแนบใบสั่งงาน<br>
+  ฝ่ายวิศวกรรมและฝึกอบรม
+</p>
+
+<h3>ข้อมูลเบื้องต้นงานการจัดแสดงหรือสาธิต</h3><br><br>
+
+<div style="margin-bottom:20px;">
+  <label>เลขที่งาน (Job Number): </label>
+  <input type="text" id="jobNumberInput" readonly>
+</div>
+
+<!-- แผนดำเนินการ -->
+<table>
+  <tr><th>แผนดำเนินการ</th><th>วันที่</th><th>เวลา</th></tr>
+  <tr>
+    <td>ออกเดินทางจาก Office</td>
+    <td><input type="text" id="startDateInput" readonly></td>
+    <td><input type="text" id="time1"></td>
+  </tr>
+  <tr>
+    <td>เข้าติดตั้งชุดฝึก</td>
+    <td><input type="date" id="date2"></td>
+    <td><input type="text" id="time2"></td>
+  </tr>
+  <tr>
+    <td>ส่งมอบชุดฝึก</td>
+    <td><input type="date" id="date3"></td>
+    <td><input type="text" id="time3"></td>
+  </tr>
+  <tr>
+    <td>เดินทางกลับ Office</td>
+    <td><input type="text" id="endDateInput" readonly></td>
+    <td><input type="text" id="time4"></td>
+  </tr>
+</table>
+
+<!-- แผนการเดินทาง -->
+<table>
+  <tr>
+    <td>แผนการเดินทาง</td>
+    <td><label><input type="checkbox" id="car_company"> รถบริษัท</label></td>
+    <td><label><input type="checkbox" id="car_sales"> รถ Sales</label></td>
+    <td><label><input type="checkbox" id="bus"> รถประจำทาง</label></td>
+    <td><label><input type="checkbox" id="plane"> เครื่องบิน</label></td>
+  </tr>
+  <tr>
+    <td>Sales ไปด้วยหรือไม่:</td>
+    <td><label><input type="checkbox" id="sales_no"> ไม่ไป</label></td>
+    <td><label><input type="checkbox" id="sales_yes"> ไป</label></td>
+    <td><label><input type="checkbox" id="sales_together"> ไปด้วยกัน</label></td>
+    <td><label><input type="checkbox" id="sales_separate"> แยกกันไป</label></td>
+  </tr>
+</table>
+
+<!-- ข้อมูลงาน -->
+<table>
+  <tr>
+    <td>มีบริษัทอื่นร่วมจัดแสดงในงานหรือไม่:</td>
+    <td><label><input type="checkbox" id="company_have"> มี</label></td>
+    <td><label><input type="checkbox" id="company_not_have"> ไม่มี</label></td>
+  </tr>
+  <tr>
+    <td>มีหมายกำหนดงานหรือไม่:</td>
+    <td><label><input type="checkbox" id="schedule_have"> มี(แนบ)</label></td>
+    <td><label><input type="checkbox" id="schedule_not_have"> ไม่มี</label></td>
+  </tr>
+  <tr>
+    <td>มีแผนผังขนาดพื้นที่จัดแสดงหรือไม่:</td>
+    <td><label><input type="checkbox" id="map_have"> มี(แนบ)</label></td>
+    <td><label><input type="checkbox" id="map_not_have"> ไม่มี</label></td>
+  </tr>
+  <tr>
+    <td>มีปลั๊กไฟหรือไม่:</td>
+    <td><label><input type="checkbox" id="plug_have"> มี</label></td>
+    <td><label><input type="checkbox" id="plug_not_have"> ไม่มี</label></td>
+  </tr>
+  <tr>
+    <td>มีปั๊มลมหรือจุดจ่ายลมให้หรือไม่:</td>
+    <td><label><input type="checkbox" id="air_have"> มี</label></td>
+    <td><label><input type="checkbox" id="air_not_have"> ไม่มี</label></td>
+  </tr>
+</table>
+
+<!-- อุปกรณ์ MPU -->
+<table>
+  <tr><th colspan="4">อุปกรณ์ที่นำไปจัดแสดงหรือสาธิต</th></tr>
+  <tr>
+    <td><label><input type="checkbox" id="MPUA"> MPU-A</label></td>
+    <td><label><input type="checkbox" id="MPUB"> MPU-B</label></td>
+    <td><label><input type="checkbox" id="MPUC"> MPU-C</label></td>
+    <td><label><input type="checkbox" id="MPUD"> MPU-D</label></td>
+  </tr>
+</table>
+
+<!-- ชุดแมคคาทรอนิกส์ -->
+<table>
+  <tr>
+    <th>- ชุดแมคคาทรอนิกส์</th>
+    <td><label><input type="checkbox" id="MC_01"> MC-01</label></td>
+    <td><label><input type="checkbox" id="MC_02"> MC-02</label></td>
+    <td><label><input type="checkbox" id="MC_03"> MC-03</label></td>
+  </tr>
+</table>
+
+<!-- ข้อมูลอุปกรณ์ -->
+<table>
+  <tr>
+    <th>PLC ยี่ห้อ</th>
+    <td><input type="text" id="PLC1"></td>
+    <th>รุ่น</th>
+    <td><input type="text" id="ver"></td>
+  </tr>
+  <tr>
+    <th>หุ่นยนต์ยี่ห้อ</th>
+    <td><input type="text" id="BOT"></td>
+    <th>รุ่น</th>
+    <td><input type="text" id="ver2"></td>
+  </tr>
+  <tr>
+    <th>โต๊ะวางหุ่นยนต์ ขนาด</th>
+    <td colspan="3"><input type="text" id="tableSize"></td>
+  </tr>
+  <tr><th>ชุดฝึกและอุปกรณ์อื่นๆ ได้แก่</th></tr>
+  <tr><td colspan="4"><input type="text" id="otherEquip"></td></tr>
+</table>
+
+<!-- รูปแบบการขนย้าย -->
+<table>
+  <tr><th colspan="3">รูปแบบการขนย้าย</th></tr>
+  <tr>
+    <td><label><input type="checkbox" id="move_all_top"> จ้างย้ายทั้งหมด</label></td>
+    <td><label><input type="checkbox" id="move_all_bottom"> ขนย้ายเองทั้งหมด</label></td>
+    <td><label><input type="checkbox" id="move_partial"> จ้างขนย้ายบางส่วน</label></td>
+  </tr>
+</table>
+
+<!-- รายการขนย้าย -->
+<table>
+  <tr><th>รายการ</th><th>จำนวน</th></tr>
+  <tr>
+    <td><input type="text" id="carry1"></td>
+    <td><input type="text" id="carryQty1"></td>
+  </tr>
+  <tr>
+    <td><input type="text" id="carry2"></td>
+    <td><input type="text" id="carryQty2"></td>
+  </tr>
+  <tr>
+    <td><input type="text" id="carry3"></td>
+    <td><input type="text" id="carryQty3"></td>
+  </tr>
+</table>
+
+<!-- ห้องติดตั้ง -->
+<table>
+  <tr><th>ห้องที่ทำการติดตั้งชุดฝึกอยู่ตึกไหน (แผนที่)...</th></tr>
+  <tr><td><input type="text" id="roomInfo"></td></tr>
+</table>
+
+<button onclick="saveFile()">💾 บันทึกข้อมูล</button>
+<div id="statusMsg" class="status"></div>
+
+<!-- External JavaScript -->
+<script type="module" src="../js/report2.js"></script>
+
+</body>
+</html>

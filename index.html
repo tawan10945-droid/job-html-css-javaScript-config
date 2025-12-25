@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>เข้าสู่ระบบ | AUTODIDACTIC</title>
+<link rel="stylesheet" href="/CSS/index.css">
+
+</head>
+<body>
+
+<div class="login-container">
+  <div class="logo">
+    <h1>🔐 AUTODIDACTIC</h1>
+    <p>ระบบจัดการงานวิศวกรรม</p>
+  </div>
+
+  <form id="loginForm">
+    <div class="form-group">
+      <label for="userId">รหัสพนักงาน</label>
+      <input 
+        type="text" 
+        id="userId" 
+        class="input-field" 
+        placeholder="กรุณากรอกรหัสพนักงาน"
+        required
+        autocomplete="username"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="password">รหัสผ่าน</label>
+      <div class="password-toggle">
+        <input 
+          type="password" 
+          id="password" 
+          class="input-field" 
+          placeholder="กรุณากรอกรหัสผ่าน"
+          required
+          autocomplete="current-password"
+        >
+        <button type="button" class="toggle-btn" id="togglePassword">👁️</button>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-login" id="loginBtn">
+      เข้าสู่ระบบ
+    </button>
+
+    <div class="loading" id="loading">
+      <div class="loading-spinner"></div>
+      <p style="margin-top: 10px; color: #666;">กำลังตรวจสอบข้อมูล...</p>
+    </div>
+
+    <div class="message" id="message"></div>
+  </form>
+
+  <div class="footer">
+    © 2025 AUTODIDACTIC SYSTEM
+  </div>
+</div>
+
+<script type="module" src="/js/index.js"></script>
+
+</body>
+</html>

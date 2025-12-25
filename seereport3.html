@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ข้อมูลเบื้องต้นงานการตรวจซ่อม</title>
+
+<!-- External CSS -->
+<link rel="stylesheet" href="../CSS/report3.css">
+
+</head>
+<body>
+
+<div>
+  <a href="notchoose.html" class="btnM">กลับไปหน้าจัดการงาน</a>
+</div>
+
+<p class="right">
+  เอกสารแนบใบสั่งงาน<br>
+  ฝ่ายวิศวกรรมและฝึกอบรม
+</p>
+
+<h3>ข้อมูลเบื้องต้นงานตรวจซ่อม</h3><br><br>
+
+<div style="margin-bottom:20px;">
+  <label>เลขที่งาน (Job Number): </label>
+  <input type="text" id="jobNumberInput" readonly>
+</div>
+
+<!-- แผนดำเนินการ -->
+<table>
+  <tr><th>แผนดำเนินการ</th><th>วันที่</th><th>เวลา</th></tr>
+  <tr>
+    <td>ออกเดินทางจาก Office</td>
+    <td><input type="text" id="startDateInput" readonly></td>
+    <td><input type="text" id="time1"></td>
+  </tr>
+  <tr>
+    <td>ตรวจซ่อม</td>
+    <td><input type="date" id="date2"></td>
+    <td><input type="text" id="time2"></td>
+  </tr>
+  <tr>
+    <td>เดินทางกลับ Office</td>
+    <td><input type="text" id="endDateInput" readonly></td>
+    <td><input type="text" id="time4"></td>
+  </tr>
+</table>
+
+<!-- แผนการเดินทาง -->
+<table>
+  <tr>
+    <td>แผนการเดินทาง</td>
+    <td><label><input type="checkbox" id="car_company"> รถบริษัท</label></td>
+    <td><label><input type="checkbox" id="car_sales"> รถ Sales</label></td>
+    <td><label><input type="checkbox" id="bus"> รถประจำทาง</label></td>
+    <td><label><input type="checkbox" id="plane"> เครื่องบิน</label></td>
+  </tr>
+  <tr>
+    <td>Sales ไปด้วยหรือไม่:</td>
+    <td><label><input type="checkbox" id="sales_no"> ไม่ไป</label></td>
+    <td><label><input type="checkbox" id="sales_yes"> ไป</label></td>
+    <td><label><input type="checkbox" id="sales_together"> ไปด้วยกัน</label></td>
+    <td><label><input type="checkbox" id="sales_separate"> แยกกันไป</label></td>
+  </tr>
+</table>
+
+<!-- รายละเอียดการซ่อม -->
+<table>
+  <tr>
+    <td>รายการชุดฝึกที่ต้องการให้ตรวจซ่อม และรายละเอียดความเสียหายในเบื้องต้น :</td>
+  </tr>
+  <tr>
+    <td><input type="text" id="repair_detail"></td>
+  </tr>
+</table>
+
+<!-- ข้อมูลการรับประกัน -->
+<table>
+  <tr>
+    <td>ชุดฝึกยังอยู่ในช่วงเวลารับประกันหรือไม่:</td>
+    <td>
+      <label><input type="checkbox" id="warranty_yes"> ใช่ รับประกันถึงวันที่ 
+        <input type="date" id="warranty_until" style="width:auto; display:inline-block;">
+      </label>
+    </td>
+    <td><label><input type="checkbox" id="warranty_no"> ไม่ใช่</label></td>
+  </tr>
+</table>
+
+<!-- ข้อมูลสถานที่ -->
+<table>
+  <tr>
+    <th>ห้องที่วางชุดฝึกอยู่ที่ตึก</th>
+    <td><input type="text" id="building"></td>
+    <th>ชั้นที่</th>
+    <td><input type="text" id="floor"></td>
+  </tr>
+</table>
+
+<button onclick="saveFile()">💾 บันทึกข้อมูล</button>
+<div id="statusMsg" class="status"></div>
+
+<!-- External JavaScript -->
+<script type="module" src="../js/report3.js"></script>
+
+</body>
+</html>

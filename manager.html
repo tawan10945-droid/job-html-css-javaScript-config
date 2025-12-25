@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👔 Manager - ตรวจสอบและแก้ไขงาน</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/manager.css">
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="../image/ad_logo-Photoroom.png" alt="Logo">
+  </div>
+  <div style="font-size:18px;">
+    👔 ตรวจสอบและแก้ไขงาน (Manager)
+    <div class="user-name" id="userNameDisplay">กำลังโหลด...</div>
+  </div>
+
+  <div class="dropdown">
+    <button class="dropbtn">☰ เมนู</button>
+    <div class="dropdown-content">
+    <a href="#" onclick="navigateWithName('calendarM.html')">📅 ปฏิทินงาน</a>
+    <a href="#" onclick="navigateWithName('result.html')">📊 ผลสรุปงาน</a>
+    <a href="index.html">🏠 หน้าหลัก</a>
+    </div>
+  </div>
+
+  <nav class="nav-buttons">
+    <a href="#" onclick="navigateWithName('calendarM.html')">📅 ปฏิทินงาน</a>
+    <a href="#" onclick="navigateWithName('result.html')">📊 ผลสรุปงาน</a>
+    <a href="index.html">🏠 หน้าหลัก</a>
+  </nav>
+</header>
+
+<main>
+  <h2>📋 รายการงานที่รอตรวจสอบ</h2>
+  <ul id="eventList" class="event-list"></ul>
+</main>
+
+<!-- Modal Popup -->
+<div id="approvalModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>✅ ยืนยันการอนุมัติงาน</h3>
+    </div>
+    
+    <div class="checkbox-group">
+      <div class="checkbox-option">
+        <input type="radio" id="signSelf" name="signType" value="เซ็นเอง" checked>
+        <label for="signSelf">✍️ เซ็นเอง</label>
+      </div>
+      
+      <div class="checkbox-option">
+        <input type="radio" id="noSign" name="signType" value="ไม่เซ็นเอง">
+        <label for="noSign">📝 ไม่เซ็นเอง</label>
+      </div>
+    </div>
+    
+    <div class="modal-buttons">
+      <button class="btn-cancel" onclick="closeModal()">ยกเลิก</button>
+      <button class="btn-confirm" onclick="confirmApproval()">ยืนยัน</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2025 ระบบจัดการงาน | AUTODIDACTIC SYSTEM
+</footer>
+
+<script type="module" src="../config-firesbase/firebase-config.js"></script>
+<script src="../js/manager-app.js" type="module"></script>
+
+</body>
+</html>

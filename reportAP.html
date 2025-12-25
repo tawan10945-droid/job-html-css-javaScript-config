@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ใบสั่งงาน / รายงานผลการปฏิบัติงาน</title>
+
+<!-- PDF Export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<!-- Firebase -->
+<script type="module" src="https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js"></script>
+
+<!-- External CSS -->
+<link rel="stylesheet" href="../CSS/reportAP.css">
+</head>
+
+<body>
+
+<div class="header-bar">
+  <h1>📄 ใบสั่งงาน / รายงานผลการปฏิบัติงาน</h1>
+  <button onclick="window.location.href='notchoose.html'">⬅ กลับหน้าแรก</button>
+</div>
+
+<div class="btn-group">
+  <div class="search-box">
+    <label>Job Number:</label>
+    <input type="text" id="jobNumberInput" placeholder="กรอก Job Number...">
+    <button class="btn secondary" id="searchBtn">🔍 ค้นหา</button>
+  </div>
+  <button class="btn" id="printBtn">🖨️ ปริ้น PDF</button>
+</div>
+
+<div id="report" class="container">
+
+  <!-- 🔹 หัวข้อ + เลขที่สั่งงาน (กระชับขึ้น) -->
+  <div class="header-title">
+    <h2>ใบสั่งงาน / ใบรายงานผลการปฏิบัติงาน</h2>
+    <div class="jobno">เลขที่: <span id="jobNo" class="line"></span></div>
+  </div>
+
+  <div class="section" style="margin-top:3mm;">
+    ชื่อผู้สั่งงาน: <span id="assignedBy" class="line"></span>
+    วันที่สั่งงาน: <span id="orderDate" class="line"></span>
+    กำหนดเสร็จงาน: <span id="deadlines" class="line1"></span><br>
+  </div>
+
+  <div class="section" style="margin-top:3mm;">
+    ลักษณะงาน:
+    <div style="text-align: right;">เลขที่ JOB: <span id="docNo" class="line"></span></div>
+    <label><input type="checkbox" id="type1"> ส่งมอบ</label>
+    <label><input type="checkbox" id="type2"> ฝึกอบรม</label>
+    <label><input type="checkbox" id="type3"> ตรวจเช็ก/ซ่อม</label>
+    <label><input type="checkbox" id="type4"> Visit</label>
+    <label><input type="checkbox" id="type5"> อื่น ๆ</label>
+  </div>
+
+  <div class="section" style="margin-top:3mm;">
+    รายละเอียดงาน:<br>
+    <div style="border-bottom:1px dotted #000; min-height:8mm; padding:2px 0; line-height:1.8;">
+      <span id="details"></span>
+    </div>
+    <div style="border-bottom:1px dotted #000; min-height:8mm; padding:2px 0; line-height:1.8;">
+      <span id="details2"></span>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top:4mm;">
+    ออกเดินทางวันที่: <span id="date" class="line2"></span>
+    เดินทางกลับวันที่: <span id="deadline" class="line2"></span>
+  </div>
+
+  <div class="section">
+    สถานที่ปฏิบัติงาน: <span id="location" class="line3"></span>
+  </div>
+
+  <div class="section">
+    ผู้ติดต่อ: <span id="contactName" class="line4"></span>
+    เบอร์โทรศัพท์: <span id="contactPhone" class="line8"></span>
+  </div>
+
+  <div class="section">
+    ผู้ปฏิบัติงาน: <span id="title" class="line7"></span>
+  </div>
+
+  <div>
+    <br><br>---------------------------------------------------------------------------------------------------------------------------------
+  </div>
+
+  <div class="section">
+    สรุปผลการปฏิบัติงาน:<br><br>
+    <label><input type="checkbox" id="success"> เรียบร้อย</label>
+    <label><input type="checkbox" id="fail"> ไม่เรียบร้อย</label>
+    <span id="incompleteReason" class="line5"></span><br><br>
+    หมายเหตุ: <span id="note" class="line9"></span>
+  </div>
+
+  <div class="signature">
+    <div>
+      <br><br><br>(..........................................)<br><br><br>
+      ลงชื่อผู้รับผิดชอบงาน
+    </div>
+    <div>
+      <br><br><br>(..........................................)<br><br><br>
+      ผู้อนุมัติ / ผู้จัดการ
+    </div>
+  </div>
+  <div class="signature">
+      <u>สำคัญ!</u> การเตรียมเอกสาร<br>
+           &nbsp;1. ส่งมอบงาน และติดตั้งอย่างน้อย 7 วัน ทำการ<br>
+           &nbsp;2. ฝึกอบรมอย่างน้อย 5 วัน ทำการ<br>
+           &nbsp;3. ออกแสดงสินค้า อย่างน้อย 10 วัน ทำการ<br>
+           &nbsp;4. ตรวจเช็ค/ซ่อม อย่างน้อย 3 วันทำการ<br>
+           &nbsp;5. Visit งาน อย่างน้อย 5 วัน ทำการ<br>
+      <div>
+        กรณีด่วน!<br><br><br><br>
+        (..........................................)<br>
+        ผู้อนุมัติ/คุณฉัตรชัย
+      </div>
+    </div>
+
+</div>
+
+<!-- External JavaScript -->
+<script type="module" src="../js/reportAP.js"></script>
+
+</body>
+</html>

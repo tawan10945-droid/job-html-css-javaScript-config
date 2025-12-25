@@ -1,0 +1,278 @@
+/* ===== CSS Variables ===== */
+:root {
+  --red-600: #c72828;
+  --red-700: #9b1f1f;
+  --card-bg: #fff;
+  --muted: #666;
+}
+
+/* ===== Reset & Base Styles ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Prompt', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #fff, #fdeaea);
+  color: #111;
+}
+
+/* ===== Header ===== */
+header {
+  background: linear-gradient(90deg, #c00, #f44336);
+  color: #fff;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo-title {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.logo-title img {
+  width: 50px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.nav-btn {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Layout ===== */
+main {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.top-actions {
+  margin-bottom: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 880px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Cards ===== */
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(199, 40, 40, 0.08);
+}
+
+.card h3 {
+  margin: 0 0 12px 0;
+  color: var(--red-600);
+  font-size: 18px;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  background: var(--red-600);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn.danger {
+  background: #ff5050;
+}
+
+.btn.secondary {
+  background: #555;
+}
+
+/* ===== Text Styles ===== */
+.small-muted {
+  font-size: 13px;
+  color: #666;
+}
+
+.tiny {
+  font-size: 12px;
+  color: #444;
+}
+
+.tiny2 {
+  font-size: 12px;
+  color: #fff;
+}
+
+/* ===== List Items ===== */
+.list-item {
+  background: #fff6f6;
+  border: 1px solid rgba(199, 40, 40, 0.12);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.action-row {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ===== Scrollable Lists ===== */
+#eventListPending,
+#eventListCompleted,
+#leaveList,
+#engineerList,
+#salesList,
+#managerList,
+#adminList,
+#workerList,
+#assignerList {
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+#eventListPending::-webkit-scrollbar,
+#eventListCompleted::-webkit-scrollbar,
+#leaveList::-webkit-scrollbar,
+#engineerList::-webkit-scrollbar,
+#salesList::-webkit-scrollbar,
+#managerList::-webkit-scrollbar,
+#adminList::-webkit-scrollbar,
+#workerList::-webkit-scrollbar,
+#assignerList::-webkit-scrollbar {
+  width: 6px;
+}
+
+#eventListPending::-webkit-scrollbar-thumb,
+#eventListCompleted::-webkit-scrollbar-thumb,
+#leaveList::-webkit-scrollbar-thumb,
+#engineerList::-webkit-scrollbar-thumb,
+#salesList::-webkit-scrollbar-thumb,
+#managerList::-webkit-scrollbar-thumb,
+#adminList::-webkit-scrollbar-thumb,
+#workerList::-webkit-scrollbar-thumb,
+#assignerList::-webkit-scrollbar-thumb {
+  background: #c00;
+  border-radius: 4px;
+}
+
+#eventListPending::-webkit-scrollbar-track,
+#eventListCompleted::-webkit-scrollbar-track,
+#leaveList::-webkit-scrollbar-track,
+#engineerList::-webkit-scrollbar-track,
+#salesList::-webkit-scrollbar-track,
+#managerList::-webkit-scrollbar-track,
+#adminList::-webkit-scrollbar-track,
+#workerList::-webkit-scrollbar-track,
+#assignerList::-webkit-scrollbar-track {
+  background: #ffe5e5;
+}
+
+/* ===== Responsive Grid ===== */
+@media (max-width: 1024px) {
+  .card div[style*="grid-template-columns:repeat(4"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .card div[style*="grid-template-columns:repeat(4"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===== Inputs ===== */
+input[type="text"],
+input[type="password"],
+select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.input-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.input-row input {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: linear-gradient(90deg, #c00, #f44336);
+  color: #fff;
+  padding: 12px;
+  text-align: center;
+  margin-top: 30px;
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Calendar ===== */
+#holidayCalendar {
+  min-height: 300px;
+}
+
+/* ===== Debug Info ===== */
+.debug-info {
+  background: #fffacd;
+  border: 1px solid #ffd700;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  margin-top: 8px;
+  max-height: 150px;
+  overflow-y: auto;
+}
